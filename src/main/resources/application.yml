@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: SpringStarter
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  web:
+    locale: ko_KR
+    locale-resolver: fixed
+
+server:
+  servlet:
+    context-path: /springStarter
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true

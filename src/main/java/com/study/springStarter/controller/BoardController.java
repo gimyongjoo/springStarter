@@ -15,6 +15,7 @@ public class BoardController {
         if(session.getAttribute("id") == null || ((String)session.getAttribute("id")).isEmpty()) {
             reatt.addFlashAttribute("msg", "loginErr"); // addFlashAttribute 는 한 번만 허용
             reatt.addAttribute("toURL", req.getRequestURL());
+            // reatt.addAttribute("key", value); ?key=value 쿼리스트링으로 전달
             return "redirect:/login1";
         }
         return "boardList";

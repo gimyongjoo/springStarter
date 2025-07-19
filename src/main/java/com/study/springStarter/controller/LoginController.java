@@ -1,15 +1,21 @@
 package com.study.springStarter.controller;
 
+import com.study.springStarter.dao.MemberDao;
+import com.study.springStarter.dto.Member;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class LoginController {
+    @Autowired
+    MemberDao dao;
+
     @GetMapping("/login1")
     public String login() {
         return "login";
@@ -40,7 +46,11 @@ public class LoginController {
     }
 
     private boolean isValid(String id, String pwd) {
-        return "asdf".equals(id) && "1234".equals(pwd);
+        Member m = dao.select(id);
+        if(m == null) {
+            return false;
+        }
+        return m.getId().equals(id) && m.getPwd().equals(pwd);
     }
 
     @GetMapping("/logout")

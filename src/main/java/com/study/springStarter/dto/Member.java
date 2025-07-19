@@ -1,25 +1,39 @@
 package com.study.springStarter.dto;
 
-public class User {
+import java.util.Date;
+import java.util.Objects;
+
+public class Member {
     private String id;
     private String pwd;
     private String name;
     private String email;
-    private String birth;
+    private java.sql.Date birth;
     private String sns;
+    private Date regDate;
 
-    public User() {
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Member member = (Member) o;
+        return Objects.equals(id, member.id) && Objects.equals(pwd, member.pwd) && Objects.equals(name, member.name) && Objects.equals(email, member.email) && Objects.equals(birth, member.birth);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, pwd, name, email, birth);
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Member{" +
                 "id='" + id + '\'' +
                 ", pwd='" + pwd + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", birth='" + birth + '\'' +
+                ", birth=" + birth +
                 ", sns='" + sns + '\'' +
+                ", regDate=" + regDate +
                 '}';
     }
 
@@ -55,11 +69,11 @@ public class User {
         this.email = email;
     }
 
-    public String getBirth() {
+    public java.sql.Date getBirth() {
         return birth;
     }
 
-    public void setBirth(String birth) {
+    public void setBirth(java.sql.Date birth) {
         this.birth = birth;
     }
 
@@ -69,5 +83,13 @@ public class User {
 
     public void setSns(String sns) {
         this.sns = sns;
+    }
+
+    public Date getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
     }
 }

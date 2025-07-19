@@ -81,7 +81,7 @@
     <label for="">이메일</label>
     <input class="input-field" type="email" name="email" placeholder="example@greenart.co.kr">
     <label for="">생일</label>
-    <input class="input-field" type="text" name="birth" placeholder="2022/12/15" >
+    <input class="input-field" type="date" name="birth" placeholder="2022/12/15" >
     <label for="">취미</label>
     <input class="input-field" type="text" name="hobby" placeholder="피아노#베이킹" >
     <div class="sns-chk">

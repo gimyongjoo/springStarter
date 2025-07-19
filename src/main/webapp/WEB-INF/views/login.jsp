@@ -59,6 +59,7 @@
 <body>
 <script>
     if(${not empty msg}) alert("로그인 후 이용 부탁드립니다.");
+    if(${not empty register}) alert("회원가입이 완료되었습니다.");
 </script>
 <form action="<c:url value='/login1'/>" method="post" onsubmit="return formCheck(this);">
     <h3 id="title">Login</h3>

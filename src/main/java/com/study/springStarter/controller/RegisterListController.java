@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
 
@@ -20,4 +21,28 @@ public class RegisterListController {
         m.addAttribute("mlist", mlist);
         return "registerList";
     }
+
+    @GetMapping("/update")
+    public String update(Member member, Model m) {
+        member = dao.select(member.getId());
+        m.addAttribute("member", member);
+
+        return "update";
+    }
+
+    @PostMapping("/update")
+    public String update(Member m) {
+        if(m.getId() == null || m.getId().isEmpty()) {
+            return "redirect:/list";
+        }
+        int res = dao.update(m);
+        return "redirect:/list";
+    }
+
+    @GetMapping("/delete")
+    public String delete(String id) {
+        dao.delete(id);
+        return "redirect:/list";
+    }
+
 }

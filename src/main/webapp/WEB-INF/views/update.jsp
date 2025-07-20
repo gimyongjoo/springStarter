@@ -64,30 +64,30 @@
     <title>Register</title>
 </head>
 <body>
-<form id="user" action="<c:url value="/register/save"/>" method="post" onsubmit="return formCheck(this)">
+<form id="user" action="<c:url value="/update"/>" method="post" onsubmit="return formCheck(this)">
 
-    <div class="title">Register</div>
+    <div class="title">Update</div>
 
 
     <div id="msg" class="msg">${URLDecoder.decode(param.msg, "UTF-8")}</div>
 
     <label for="">아이디</label>
-    <input class="input-field" type="text" name="id" placeholder="8~12자리의 영대소문자와 숫자 조합" autofocus>
+    <input class="input-field" readonly type="text" name="id" placeholder="8~12자리의 영대소문자와 숫자 조합" value="${member.id}">
 
     <label for="">비밀번호</label>
     <input class="input-field" type="password" name="pwd" placeholder="8~12자리의 영대소문자와 숫자 조합">
     <label for="">이름</label>
-    <input class="input-field" type="text" name="name" placeholder="홍길동">
+    <input class="input-field" type="text" name="name" placeholder="홍길동" value="${member.name}">
     <label for="">이메일</label>
-    <input class="input-field" type="email" name="email" placeholder="example@greenart.co.kr">
+    <input class="input-field" type="email" name="email" placeholder="example@greenart.co.kr" value="${member.email}">
     <label for="">생일</label>
-    <input class="input-field" type="date" name="birth" placeholder="2022/12/15" >
+    <input class="input-field" type="date" name="birth" placeholder="2022/12/15" value="${member.birth}">
     <div class="sns-chk">
         <label><input type="checkbox" name="sns" value="facebook">페이스북</label>
         <label><input type="checkbox" name="sns" value="kakaotalk">카카오톡</label>
         <label><input type="checkbox" name="sns" value="instagram">인스타그램</label>
     </div>
-    <input id="input-submit" type="submit" value="회원가입"></input>
+    <input id="input-submit" type="submit" value="수정하기"></input>
 </form>
 
 

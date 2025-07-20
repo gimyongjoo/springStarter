@@ -118,10 +118,17 @@
             <td><fmt:formatDate value="${m.birth}" pattern="yyyy-MM-dd" /></td>
             <td>${m.sns}</td>
             <td><fmt:formatDate value="${m.regDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-            <td><button type="button" onclick="location.href='update'">수정</button></td>
-            <td><button class="btn2" type="button" onclick="location.href='delete'">삭제</button></td>
+            <td><button type="button" onclick="location.href='update?id=${m.id}'">수정</button></td>
+            <td><button class="btn2" type="button" onclick="return deleter('${m.id}')">삭제</button></td>
         </tr>
     </c:forEach>
 </table>
+<script>
+    function deleter(id) {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = "delete?id=" + id;
+        }
+    }
+</script>
 </body>
 </html>

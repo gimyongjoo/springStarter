@@ -60,6 +60,8 @@ public class MemberDaoImpl implements MemberDao {
             psmt.setString(3, m.getEmail());
             psmt.setString(4, m.getSns());
             psmt.setString(5, m.getId());
+
+            res = psmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

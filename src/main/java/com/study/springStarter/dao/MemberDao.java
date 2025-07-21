@@ -1,25 +1,20 @@
 package com.study.springStarter.dao;
 
 import com.study.springStarter.dto.Member;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface MemberDao {
-    int insert(Member m);
+    int insert(Member m) throws Exception;
 
-    int update(Member m);
+    int update(Member m) throws Exception;
 
-    int delete(String id);
+    int delete(String id) throws Exception;
 
-    Member select(String id);
+    Member select(String id) throws Exception;
 
-    ArrayList<Member> selectList();
+    List<Member> selectList() throws Exception;
+
+    public int deleteAll() throws Exception;
 }
 

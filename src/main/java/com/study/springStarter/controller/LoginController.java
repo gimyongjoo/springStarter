@@ -25,7 +25,7 @@ public class LoginController {
     public String login(String id, String pwd, String toURL, boolean rememberId, HttpServletResponse resp, HttpServletRequest req) {
         toURL = "".equals(toURL) || toURL == null ? "/" : toURL;
         if(!isValid(id, pwd)) {
-            return "redirect:/login";
+            return "redirect:/login1";
         }
         if(rememberId) {
             Cookie cookie = new Cookie("id", id);
@@ -46,7 +46,12 @@ public class LoginController {
     }
 
     private boolean isValid(String id, String pwd) {
-        Member m = dao.select(id);
+        Member m = null;
+        try {
+            m = dao.select(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         if(m == null) {
             return false;
         }

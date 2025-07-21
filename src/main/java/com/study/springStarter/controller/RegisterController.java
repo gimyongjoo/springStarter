@@ -34,7 +34,12 @@ public class RegisterController {
     }
 
     private boolean isValid(Member member) {
-        int res = dao.insert(member);
+        int res = 0;
+        try {
+            res = dao.insert(member);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return res  == 1;
     }
 }

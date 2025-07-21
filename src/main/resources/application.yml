@@ -17,6 +17,11 @@ spring:
     locale: ko_KR
     locale-resolver: fixed
 
+mybatis:
+#  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.study.springStarter.dto
+
 server:
   servlet:
     context-path: /springStarter

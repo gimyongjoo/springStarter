@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RegisterListController {
@@ -17,14 +18,24 @@ public class RegisterListController {
 
     @GetMapping("/list")
     public String list(Model m) {
-        ArrayList<Member> mlist = dao.selectList();
+        List<Member> mlist = null;
+        try {
+            mlist = dao.selectList();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(mlist);
         m.addAttribute("mlist", mlist);
         return "registerList";
     }
 
     @GetMapping("/update")
     public String update(Member member, Model m) {
-        member = dao.select(member.getId());
+        try {
+            member = dao.select(member.getId());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         m.addAttribute("member", member);
 
         return "update";
@@ -35,13 +46,21 @@ public class RegisterListController {
         if(m.getId() == null || m.getId().isEmpty()) {
             return "redirect:/list";
         }
-        int res = dao.update(m);
+        try {
+            int res = dao.update(m);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "redirect:/list";
     }
 
     @GetMapping("/delete")
     public String delete(String id) {
-        dao.delete(id);
+        try {
+            dao.delete(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         return "redirect:/list";
     }
 

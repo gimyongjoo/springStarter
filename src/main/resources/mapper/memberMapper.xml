@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.study.springStarter.dao.MemberDao">
+    <insert id="insert" parameterType="Member">
+        insert into member(id, pwd, name, email, birth, sns) values(#{id}, #{pwd}, #{name}, #{email}, #{birth}, #{sns})
+    </insert>
+
+    <select id="select" parameterType="String" resultType="Member">
+        select id, pwd, name, email, birth, sns, regDate from member where id = #{id}
+    </select>
+
+    <delete id="delete" parameterType="String">
+        delete from member where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="Member">
+        update member set pwd = #{pwd}, name = #{name}, email = #{email}, sns = #{sns}, regDate = now() where id = #{id}
+    </update>
+
+    <delete id="deleteAll">
+        delete from member;
+    </delete>
+
+    <select id="selectList" resultType="Member">
+        select id, pwd, name, email, birth, sns, regDate from member
+    </select>
+</mapper>

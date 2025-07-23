@@ -61,20 +61,17 @@
         <li id="logo">greenart</li>
         <li><a href="<c:url value='/'/>">Home</a></li>
         <li><a href="<c:url value='/board/list'/>">Board</a></li>
+        <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
         <c:choose>
-            <c:when test="${not empty sessionScope.id}">
-                <li><a href="<c:url value='/logout'/>">Logout</a></li>
+            <c:when test="${empty sessionScope.id }">
+                <li><a href="<c:url value='/login1'/>">login</a></li>
             </c:when>
             <c:otherwise>
-                <li><a href="<c:url value='/register/add'/>">Sign in</a></li>
-                <li><a href="<c:url value='/login1'/>">Login</a></li>
+                <li><a href="<c:url value='/logout'/>">logout</a></li>
             </c:otherwise>
         </c:choose>
         <li><a href=""><i class="fas fa-search small"></i></a></li>
     </ul>
-</div>
-<div style="text-align:center">
-    <h1>홈 화면</h1>
 </div>
 </body>
 </html>

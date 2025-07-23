@@ -20,7 +20,7 @@ spring:
 mybatis:
 #  config-location: classpath:mybatis-config.xml
   mapper-locations: classpath:mapper/*Mapper.xml
-  type-aliases-package: com.study.springStarter.dto
+  type-aliases-package: com.study.springStarter.dto, com.study.springStarter.util
 
 server:
   servlet:

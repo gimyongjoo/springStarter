@@ -13,10 +13,10 @@ public class Board {
     private Date regDate;
     private Date modiDate;
 
-    public Board(String writer, String content, String title) {
-        this.writer = writer;
-        this.content = content;
+    public Board(String title, String content, String writer) {
         this.title = title;
+        this.content = content;
+        this.writer = writer;
     }
 
     public Board() {

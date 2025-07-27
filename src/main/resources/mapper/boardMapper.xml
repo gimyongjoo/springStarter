@@ -72,4 +72,9 @@
     <delete id="deleteAll">
         delete from board
     </delete>
+
+    <update id="updateCommentCnt" parameterType="map">
+        update board set commentCnt = +#{commentCnt}
+        where bno = #{bno}
+    </update>
 </mapper>

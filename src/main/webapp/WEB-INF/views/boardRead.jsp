@@ -267,6 +267,8 @@
         <a href="<c:url value='/board/list${sc.queryString}'/>" class="btn btn-primary">목록으로 돌아가기</a>
     </div>
 </div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<%@ include file="comment.jsp" %>
 <script>
     function deleteFn() {
         let check = confirm('정말로 삭제하시겠습니까?');

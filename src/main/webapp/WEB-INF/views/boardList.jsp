@@ -95,12 +95,9 @@
 
         th:nth-child(1), td:nth-child(1) { width: 10%; text-align: center; } /* 번호 */
         th:nth-child(2), td:nth-child(2) { width: 40%; text-align: center; }   /* 제목 */
-        th:nth-child(3), td:nth-child(3) { width: 15%; text-align: center; } /* 아이디 */
+        th:nth-child(3), td:nth-child(3) { width: 20%; text-align: center; } /* 아이디 */
         th:nth-child(4), td:nth-child(4) { width: 20%; text-align: center; } /* 등록일 */
-        th:nth-child(5), td:nth-child(5) { width: 15%; text-align: center; } /* 조회수 */
-
-        td:nth-child(2) {
-        }
+        th:nth-child(5), td:nth-child(5) { width: 10%; text-align: center; } /* 조회수 */
 
         tr:nth-child(even) {
             background-color: #fcfcfc;
@@ -156,13 +153,13 @@
             transform: none;
             box-shadow: 0 2px 4px rgba(147, 204, 141, 0.2);
         }
+
         /* 이전/다음 버튼 스타일 */
         #page a.step{
             background: linear-gradient(135deg, #f0f8f0, #e8f5e8);
             border-color: rgba(147, 204, 141, 0.4);
             font-weight: bold;
         }
-
         .write-btn {
             display: inline-block;
             margin-top: 20px;
@@ -182,6 +179,130 @@
             background-color: #7AB872;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* 기존 .container 스타일 유지 */
+        .container {
+            width: 90%;
+            max-width: 720px; /* 게시판 크기 줄이기 */
+            margin: 40px auto;
+            /* text-align: center;  이 부분은 제거하거나 다른 요소에 적용하세요 */
+        }
+
+        /* 검색 폼을 감싸는 div (search-container)의 스타일 */
+        .search-container {
+            margin: 30px 0 0 auto; /* 왼쪽 마진을 auto로 설정하여 우측으로 밀어냅니다. */
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: flex-end; /* 검색 폼 내부 요소를 우측으로 정렬합니다. */
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: fit-content; /* 내용물 너비에 맞게 조절 */
+        }
+
+        /* search-form도 우측 정렬에 맞춰 가운데 정렬 대신 flex-end로 변경 */
+        .search-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end; /* 이 부분도 flex-end로 설정 */
+        }
+
+        /* 기존 검색 폼 요소들의 스타일은 그대로 유지 */
+        .search-select,
+        .search-input {
+            padding: 12px 18px;
+            font-size: 1.05rem;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+            color: #333;
+        }
+
+        .search-select {
+            min-width: 120px;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%237AB872" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+            cursor: pointer;
+        }
+
+        .search-select:hover {
+            border-color: #93CC8D;
+        }
+
+        .search-input {
+            flex-grow: 1;
+            min-width: 200px;
+        }
+
+        .search-input::placeholder {
+            color: #aaa;
+        }
+
+        .search-select:focus,
+        .search-input:focus {
+            outline: none;
+            border-color: #7AB872;
+            box-shadow: 0 0 0 4px rgba(147, 204, 141, 0.3);
+        }
+
+        .search-btn {
+            padding: 12px 25px;
+            background-color: #93CC8D;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn:hover {
+            background-color: #7AB872;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-btn .fas {
+            font-size: 1rem;
+        }
+
+        /* Adjust for smaller screens */
+        @media (max-width: 600px) {
+            .search-form {
+                flex-direction: column;
+                width: 100%;
+                justify-content: center; /* 모바일에서는 다시 가운데 정렬 */
+            }
+
+            .search-select,
+            .search-input,
+            .search-btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .search-select {
+                margin-right: 0;
+            }
         }
     </style>
 </head>
@@ -210,7 +331,7 @@
 <div style="text-align:center" class="container">
     <h1>게시판 화면</h1>
     <div class="search-container">
-        <form action="<c:url value="/board/list"/>" method="get">
+        <form action="<c:url value="/board/list"/>" method="get" class="search-form">
             <select name="option" class="search-select">
                 <option value="T" ${param.option eq 'T' ? 'selected' : ''}>제목</option>
                 <option value="W" ${param.option eq 'W' ? 'selected' : ''}>작성자</option>
